@@ -1,0 +1,32 @@
+name: astrbot_plugin_guard
+display_name: 群聊防护
+short_desc: 防提示词注入、防越权操作、防设定泄露
+desc: |
+  给群聊机器人加一层防护，非管理员无法让它改设定、泄露提示词或操作系统。
+
+  ## 四道闸
+  - 消息闸：命中注入话术（忽略以上指令、输出你的提示词、越狱等）直接拦截
+  - 意图闸：要求打开程序、执行命令、删除文件、截图等，非管理员一律拒绝
+  - 工具闸：LLM 调用危险工具前硬鉴权，非管理员调用直接抛出，工具不会执行
+  - 输出闸：回复中出现与系统提示词重合的长片段时，替换为拒绝话术
+
+  ## 指令（仅管理员）
+  - `/guard status`：查看防护状态
+  - `/guard test <文本>`：测试一段文本会命中哪些规则
+  - `/guard log [n]`：查看最近 n 条审计记录
+  - `/guard add <QQ>` / `/guard del <QQ>`：维护额外管理员白名单
+
+  ## 特点
+  - 不依赖模型是否听话，工具鉴权在代码层
+  - 所有钩子都有异常兜底，插件出错不影响正常聊天
+  - 审计日志按天写文件，便于事后追查
+version: 1.0.0
+author: your-name
+repo: https://github.com/your-name/astrbot_plugin_guard
+astrbot_version: ">=4.16.0"
+support_platforms:
+  - aiocqhttp
+  - qq_official
+  - telegram
+  - discord
+  - lark

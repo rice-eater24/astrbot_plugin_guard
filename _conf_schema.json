@@ -1,0 +1,66 @@
+{
+  "enabled": {
+    "description": "总开关",
+    "type": "bool",
+    "default": true,
+    "hint": "关掉后所有防护失效，只保留 /guard 指令"
+  },
+  "block_injection": {
+    "description": "拦截提示词注入",
+    "type": "bool",
+    "default": true,
+    "hint": "命中「忽略以上指令」「输出你的提示词」「越狱」等话术时直接拒绝"
+  },
+  "block_danger_intent": {
+    "description": "拦截越权操作意图",
+    "type": "bool",
+    "default": true,
+    "hint": "非管理员要求打开程序、执行命令、删除文件、截图等，一律拒绝"
+  },
+  "guard_tools": {
+    "description": "工具调用鉴权",
+    "type": "bool",
+    "default": true,
+    "hint": "非管理员调用危险工具前直接拦截，工具不会执行。这是最关键的一道"
+  },
+  "tool_deny_prefixes": {
+    "description": "危险工具名前缀",
+    "type": "list",
+    "default": ["desktop_", "computer", "shell", "exec", "system", "file", "mcp_"],
+    "hint": "工具名以这些前缀开头时，非管理员调用会被拒绝"
+  },
+  "block_leak": {
+    "description": "检测提示词泄露",
+    "type": "bool",
+    "default": true,
+    "hint": "回复中出现与系统提示词重合的长片段时替换为拒绝话术"
+  },
+  "admin_ids": {
+    "description": "额外管理员 QQ",
+    "type": "list",
+    "default": [],
+    "hint": "除了 AstrBot 全局管理员之外，额外允许的账号"
+  },
+  "audit": {
+    "description": "写审计日志",
+    "type": "bool",
+    "default": true,
+    "hint": "记录拦截事件到 data/plugin_data/astrbot_plugin_guard/"
+  },
+  "max_len": {
+    "description": "参与检测的最大字数",
+    "type": "int",
+    "default": 2000,
+    "hint": "超长消息跳过文本检测，避免正则开销"
+  },
+  "reply_blocked": {
+    "description": "拦截时的回复",
+    "type": "string",
+    "default": "这个我做不了。"
+  },
+  "reply_leak": {
+    "description": "疑似泄露时的替换文本",
+    "type": "string",
+    "default": "……这不能告诉你。"
+  }
+}
