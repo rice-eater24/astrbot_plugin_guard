@@ -21,8 +21,8 @@ desc: |
   - 所有钩子都有异常兜底，插件出错不影响正常聊天
   - 审计日志按天写文件，便于事后追查
 version: 1.0.0
-author: your-name
-repo: https://github.com/your-name/astrbot_plugin_guard
+author: rice_eater24
+repo: https://github.com/rice_eater24/astrbot_plugin_guard
 astrbot_version: ">=4.16.0"
 support_platforms:
   - aiocqhttp
